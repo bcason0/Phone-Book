@@ -21,6 +21,15 @@ public class PhoneBook {
         return contacts.get(name);
     }
 
+    public String reverseLookUp(String number){
+        for(String name : contacts.keySet()){
+            if(contacts.get(name).equals(number)){
+                return name;
+            }
+        }
+        return null;
+    }
+
     public String listAllContacts(){
         String str = "";
         for(Map.Entry<String, String> entry : contacts.entrySet()){

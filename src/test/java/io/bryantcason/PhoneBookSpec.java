@@ -46,6 +46,13 @@ public class PhoneBookSpec {
         newarkPhoneBook.listAllContacts();
     }
 
+    @Test
+    public void reverseLookUpTest(){
+        String expectedValue = "Jet Li";
+        String actualValue = newarkPhoneBook.reverseLookUp("555.555.5555");
+        assertEquals("Should return Jet Li", expectedValue, actualValue);
+    }
+
 
 
 
