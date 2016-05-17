@@ -1,14 +1,15 @@
 package io.bryantcason;
 
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
 public class PhoneBook {
 
-    Map<String, String> contacts = new TreeMap<String, String>();
+    Map<String, ArrayList<String>> contacts = new TreeMap<String, ArrayList<String>>();
 
-    public void addContact(String name, String number){
+    public void addContact(String name, ArrayList<String> number){
         contacts.put(name, number);
     }
 
@@ -17,13 +18,13 @@ public class PhoneBook {
 
     }
 
-    public String lookUpContact(String name){
+    public ArrayList<String> lookUpContact(String name){
         return contacts.get(name);
     }
 
     public String reverseLookUp(String number){
         for(String name : contacts.keySet()){
-            if(contacts.get(name).equals(number)){
+            if(contacts.get(name).contains(number)){
                 return name;
             }
         }
@@ -32,9 +33,9 @@ public class PhoneBook {
 
     public String listAllContacts(){
         String str = "";
-        for(Map.Entry<String, String> entry : contacts.entrySet()){
+        for(Map.Entry<String, ArrayList<String>> entry : contacts.entrySet()){
             String name = entry.getKey();
-            String number = entry.getValue();
+            ArrayList<String> number = entry.getValue();
 
             str += name + ", " + number + ", ";
         }
@@ -44,7 +45,7 @@ public class PhoneBook {
 
     public String listAllNames(){
         String str = "";
-        for(Map.Entry<String, String> entry : contacts.entrySet()){
+        for(Map.Entry<String, ArrayList<String>> entry : contacts.entrySet()){
             String name = entry.getKey();
             str += name + ", ";
         }
